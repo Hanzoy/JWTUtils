@@ -1,6 +1,6 @@
 # JWTUtils
 快速生成token工具包
-# JWTUtils2.1使用详解
+# JWTUtils2.2使用详解
 
 **引言**
 
@@ -17,7 +17,7 @@
 <dependency>
     <groupId>com.hanzoy</groupId>
     <artifactId>utils</artifactId>
-    <version>2.1</version>
+    <version>2.2</version>
 </dependency>
 ```
 
@@ -158,5 +158,17 @@ People people = jwtUtils.getBean(token, People.class);
 ```java
 Map<String, Object> map1 = jwtUtils.getBeanAsMap(token);
 Map<String, String> map2 = jwtUtils.getBeanAsMap(token, String.class);
+```
+
+##### getValueFromToken方法
+
+![image-20210324193254379](http://picture.hanzoy.com/img/image-20210324193254379.png)
+
+该方法提供了从token中通过key值直接获取value值的方法。
+
+例如：
+
+```java
+String username = jwtUtils.getValueFromToken(token, "username");
 ```
 
