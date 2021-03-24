@@ -213,6 +213,19 @@ public class JWTUtils {
         return getBeanAsMap(token, Object.class);
     }
 
+    public Object getValueFromToken(String token, String key){
+        ObjectMapper objectMapper = new ObjectMapper();
+        Claim claim = JWT.require(Algorithm.HMAC256(this.sign)).build().verify(token).getClaim(key);
+        Object res = null;
+        try {
+            if(claim.asString() == null)
+                return null;
+            res = objectMapper.readValue(claim.asString(),Object.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
 }
 
 
